@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant searching app</title>
+<style>
+
+    body{background: linear-gradient(rgb(253, 62, 62),red); background-repeat: no-repeat; background-size: cover;background-color: red;}
+    h1{text-align:center; color:white; background-color: #ce0404; font-style: oblique; font-size: 50px; border: honeydew solid 5px;}
+    .submit{ width: 15%; padding: 10px; font-size: 20px; background-color: #333399; color: white;}
+    .search{ width: 80%; padding: 10px; font-size: 20px;}
+    form{ width: 1000px; margin: auto; margin-top: 100px;}
+    input[type=submit]:hover{
+        background: linear-gradient(#0095cc,#00678e);
+    }
+    button:hover{
+        background: linear-gradient(#0095cc,#00678e);
+    }
+    
+</style>
+</head>
+
+<body>
+    <h1>Restaurant Searching App</h1>
+    <button onclick="getLocation()" class="submit">Get Location</button>
+    <div id="output"></div>
+    
+
+    <script
+    src="http://code.jquery.com/jquery-2.2.4.min.js">
+    </script>
+
+    <script>
+
+        var x = document.getElementById('output');
+
+        function getLocation(){
+
+            if(navigator.geolocation)
+            {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else{
+
+                x.innerHTML = "Browser not Supporting";
+            }
+
+        }
+
+        function showPosition(position)
+        {
+            x.innerHTML = "Latitude =" + position.coords.latitude;
+            x.innerHTML += "<br/>";
+            x.innerHTML += "Longitude =" + position .coords.longitude;        
+            
+        }
+    </script>
+    
+    <form>
+    <input type="text" name="text" class="search" placeholder="Search Here" list="itemlist">
+    <input type="submit" name="submit" class="submit" value="Search">
+    </form>
+
+    <datalist id="itemlist">
+
+        <option value="First Option">First item</option>
+        <option value="Second Option">Second item</option>
+        <option value="Third Option">Third item</option>
+        <option value="Fourth Option">Fourth item</option>
+
+    </datalist>
+
+</body>
+</html>
